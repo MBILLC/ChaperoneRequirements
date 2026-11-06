@@ -34,7 +34,7 @@ package ChaperoneMetadata {
         attribute title : String[0..1];
         attribute tolerance : String[0..1];
         attribute rationale : String[0..1];
-        attribute verification : String[0..1];
+        attribute verificationMethod : String[0..1];
         attribute tags : String[0..1];
         attribute criticality : String[0..1];
         attribute tbd : String[0..1];
@@ -99,7 +99,7 @@ package ChaperoneMetadata {
         doc /* On a package: a waiver of a test rule. */
         attribute uid : String[0..1];
         attribute rule : String[0..1];
-        attribute requirement : String[0..1];
+        attribute requirementId : String[0..1];
         attribute rationale : String[0..1];
         attribute approver : String[0..1];
         attribute decidedBy : String[0..1];
@@ -139,7 +139,7 @@ package ChaperoneMetadata {
     metadata def ChaperoneDisposition {
         doc /* On a package: what was decided about a violated or mismatched verdict. */
         attribute uid : String[0..1];
-        attribute requirement : String[0..1];
+        attribute requirementId : String[0..1];
         attribute testCase : String[0..1];
         attribute recordHash : String[0..1];
         attribute decision : String[0..1];

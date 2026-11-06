@@ -24,7 +24,7 @@ package Probe {
         doc /* While the pack is on, the cabin temperature shall remain within 18 degC and 27 degC. */
         subject plant : CabinModel;
         attribute tolerance : TemperatureDifferenceValue = 2['°C'];
-        @ChaperoneReq { verification = "Simulation"; uses = ("SIG_T", "SIG_P"); }
+        @ChaperoneReq { verificationMethod = "Simulation"; uses = ("SIG_T", "SIG_P"); }
         @ChaperoneSource { informal = "The cabin shall be comfortable."; }
         assume constraint { plant.'the pack is on' }
         require constraint { plant.'the cabin temperature' >= 291.15[K] and plant.'the cabin temperature' <= 300.15[K] }
