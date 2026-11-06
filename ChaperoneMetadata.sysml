@@ -49,6 +49,16 @@ package ChaperoneMetadata {
         attribute statement : String[0..1];
     }
 
+    metadata def ChaperoneRewrite {
+        doc /* On a Derivation connection: the rewrite of an original requirement into usages of the library.
+             * status is proposed until a person accepts it; refused says what of the original was not carried
+             * over and why, with the rule. A rewrite is never completed silently. */
+        attribute status : String[0..1];
+        attribute approver : String[0..1];
+        attribute date : String[0..1];
+        attribute refused : String[0..*];
+    }
+
     metadata def ChaperoneData {
         doc /* On a package: a map, a curve or a limit table the requirements refer to by name. */
         attribute uid : String[0..1];
