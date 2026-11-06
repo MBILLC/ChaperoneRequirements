@@ -8,8 +8,9 @@ code is the number of failures. `--export` writes the JSON of a named package wi
 %export, the normative API & Services serialization.
 """
 import argparse
+import base64
 import queue
-import shutil
+import re
 import sys
 from pathlib import Path
 
@@ -32,7 +33,7 @@ def run_cell(client, code: str, timeout: float = 1500.0) -> tuple[str, str]:
         if t == "stream":
             (err if c.get("name") == "stderr" else out).append(c["text"])
         elif t in ("execute_result", "display_data"):
-            out.append(c["data"].get("text/plain") or " ".join(f"{k}: {str(v)[:300]}" for k, v in c["data"].items()))
+            out.append(c["data"].get("text/plain") or "".join(str(v) for v in c["data"].values()))
         elif t == "error":
             err.append("\n".join(c.get("traceback") or [c.get("evalue", "")]))
         elif t == "status" and c.get("execution_state") == "idle":
@@ -47,7 +48,6 @@ def main(argv=None) -> int:
     p.add_argument("--magic", action="append", default=[], help="a kernel command to run after the files")
     p.add_argument("--out", type=Path, default=Path("pilot-export"))
     a = p.parse_args(argv)
-    before = set(Path(".").glob("*.json"))
     km, client = start_new_kernel(kernel_name="sysml", startup_timeout=300)
     failures = 0
     try:
@@ -61,7 +61,6 @@ def main(argv=None) -> int:
             print(f"--- {m}\n{out}{err}", flush=True)
         a.out.mkdir(parents=True, exist_ok=True)
         for name in a.export:
-            print("cells:", run_cell(client, f"%show {name}")[0][:1500], flush=True)
             out, err = run_cell(client, f"%export {name}")
             print(f"--- %export {name}\n{out[:400]}{err[:2000]}", flush=True)
             if err.strip():
@@ -69,8 +68,6 @@ def main(argv=None) -> int:
     finally:
         client.stop_channels()
         km.shutdown_kernel(now=True)
-    for j in set(Path(".").glob("*.json")) - before:
-        shutil.move(str(j), a.out / j.name)
     print(f"pilot: {failures} failure(s)")
     return failures
 

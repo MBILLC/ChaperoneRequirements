@@ -27,14 +27,7 @@ jobs:
       - name: Load the library and the probe, export the JSON
         run: |
           python tools/pilot_check.py ChaperoneMetadata.sysml ChaperoneUnits.sysml examples/Probe.sysml \
-            --magic "%help" --magic "%help %export" --export Probe --export ChaperoneMetadata
-      - name: Where the export went
-        if: always()
-        run: |
-          mkdir -p pilot-export
-          find "$PWD" /tmp -type f -mmin -10 2>/dev/null | grep -v "/.git/\|/_temp/\|_actions\|pilot-export" | head -20
-          find "$PWD" -maxdepth 2 -type f -mmin -10 -name "*.json" -not -path "*/pilot-export/*" -exec cp {} pilot-export/ \;
-          ls -la pilot-export
+            --export Probe --export ChaperoneMetadata
       - uses: actions/upload-artifact@v4
         if: always()
         with:
