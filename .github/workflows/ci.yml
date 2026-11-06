@@ -32,3 +32,13 @@ jobs:
         with:
           name: pilot-export
           path: pilot-export
+  sysmlpy:
+    name: sysmlpy parses and analyzes the library
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install sysmlpy==0.105.0
+      - run: sysmlpy analyze ChaperoneMetadata.sysml ChaperoneUnits.sysml ChaperoneRequirements.sysml

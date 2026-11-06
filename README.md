@@ -50,7 +50,7 @@ A verdict is written back as a `verification` usage with `VerdictKind` and `@Cha
 
 ## Checks
 
-CI loads the three packages and the two examples into the OMG pilot implementation (release pinned in `.github/workflows/ci.yml`) and fails on any error. `examples/` holds one synthetic project twice: `Example.sysml` with the requirements as sentences, and `ExampleLibrary.sysml` as usages of this library, covering every definition.
+CI loads the three packages and the two examples into the OMG pilot implementation (release pinned in `.github/workflows/ci.yml`) and fails on any error; `sysmlpy analyze` checks the three packages. `examples/` holds one synthetic project twice: `Example.sysml` with the requirements as sentences, and `ExampleLibrary.sysml` as usages of this library, covering every definition.
 
 ## Versions
 
