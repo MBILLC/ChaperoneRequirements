@@ -150,97 +150,97 @@ package ChaperoneRequirements {
     }
     requirement def SlidingIncrease :> TimedRequirement {
         doc /* [signal] shall not increase by more than [q or %] within any [window] */
-        attribute signal : ScalarQuantityValue[1];
+        attribute signal [1];
         attribute upper : ScalarQuantityValue[1];
         attribute window : DurationValue[1];
     }
     requirement def Stable :> TimedRequirement {
         doc /* [signal] shall be stable, with a mean rate of change of at most [q] over any [window] */
-        attribute signal : ScalarQuantityValue[1];
+        attribute signal [1];
         attribute upper : ScalarQuantityValue[1];
         attribute window : DurationValue[1];
     }
     requirement def OperatingPointWithinMap :> ExcursionRequirement {
         doc /* the operating point of (x, y) shall stay within [map][, leaving it for at most ...] */
-        attribute x : ScalarQuantityValue[1];
-        attribute y : ScalarQuantityValue[1];
+        attribute x [1];
+        attribute y [1];
         attribute map : String[1];
     }
     requirement def SpectrumBelowCurve :> TimedRequirement {
         doc /* the spectrum of [signal] shall stay below [curve] */
-        attribute signal : ScalarQuantityValue[1];
+        attribute signal [1];
         attribute curve : String[1];
     }
     requirement def RelativeSpectrumBelowCurve :> TimedRequirement {
         doc /* the spectrum of [signal] relative to [f] shall stay below [curve] */
-        attribute signal : ScalarQuantityValue[1];
+        attribute signal [1];
         attribute curve : String[1];
         attribute fBase : FrequencyValue[1];
     }
     requirement def TotalHarmonicDistortion :> TimedRequirement {
         doc /* the total harmonic distortion of [signal] at [f] with a resolution of [df] shall be at most [%] */
-        attribute signal : ScalarQuantityValue[1];
+        attribute signal [1];
         attribute fBase : FrequencyValue[1];
         attribute fResolution : FrequencyValue[1];
         attribute upper : ScalarQuantityValue[1];
     }
     requirement def StepOvershoot :> TimedRequirement {
         doc /* the overshoot of [signal] shall be at most [q or %] */
-        attribute signal : ScalarQuantityValue[1];
+        attribute signal [1];
         attribute target : StepTargetKind[0..1];
-        attribute reference : ScalarQuantityValue[0..1];
+        attribute reference [0..1];
         attribute upper : ScalarQuantityValue[1];
     }
     requirement def StepUndershoot :> TimedRequirement {
         doc /* the undershoot of [signal] shall be at most [%] */
-        attribute signal : ScalarQuantityValue[1];
+        attribute signal [1];
         attribute target : StepTargetKind[0..1];
-        attribute reference : ScalarQuantityValue[0..1];
+        attribute reference [0..1];
         attribute upper : ScalarQuantityValue[1];
     }
     requirement def StepRiseTime :> TimedRequirement {
         doc /* the rise time of [signal] [from [a] % to [b] %] shall be at most [duration] */
-        attribute signal : ScalarQuantityValue[1];
+        attribute signal [1];
         attribute target : StepTargetKind[0..1];
-        attribute reference : ScalarQuantityValue[0..1];
+        attribute reference [0..1];
         attribute upper : DurationValue[1];
         attribute levelFrom : Real[0..1];
         attribute levelTo : Real[0..1];
     }
     requirement def StepDelayTime :> TimedRequirement {
         doc /* the delay time of [signal] shall be at most [duration] */
-        attribute signal : ScalarQuantityValue[1];
+        attribute signal [1];
         attribute target : StepTargetKind[0..1];
-        attribute reference : ScalarQuantityValue[0..1];
+        attribute reference [0..1];
         attribute upper : DurationValue[1];
     }
     requirement def StepSettling :> TimedRequirement {
         doc /* [signal] shall settle to within [band] within [duration] */
-        attribute signal : ScalarQuantityValue[1];
+        attribute signal [1];
         attribute target : StepTargetKind[0..1];
-        attribute reference : ScalarQuantityValue[0..1];
+        attribute reference [0..1];
         attribute band : ScalarQuantityValue[1];
         attribute upper : DurationValue[1];
     }
     requirement def StepSteadyStateError :> TimedRequirement {
         doc /* the steady-state error of [signal] shall be at most [q or %] */
-        attribute signal : ScalarQuantityValue[1];
+        attribute signal [1];
         attribute target : StepTargetKind[0..1];
-        attribute reference : ScalarQuantityValue[0..1];
+        attribute reference [0..1];
         attribute upper : ScalarQuantityValue[1];
     }
     requirement def StepDampingRatio :> TimedRequirement {
         doc /* the damping ratio of [signal] shall be at least [z] */
-        attribute signal : ScalarQuantityValue[1];
+        attribute signal [1];
         attribute target : StepTargetKind[0..1];
-        attribute reference : ScalarQuantityValue[0..1];
+        attribute reference [0..1];
         attribute lower : Real[1];
     }
     requirement def StepDecayRatio :> TimedRequirement {
         doc /* the decay ratio of [signal] shall be at most [d] */
-        attribute signal : ScalarQuantityValue[1];
+        attribute signal [1];
         attribute target : StepTargetKind[0..1];
-        attribute reference : ScalarQuantityValue[0..1];
+        attribute reference [0..1];
         attribute upper : Real[1];
     }
     requirement def EigenvalueRealPart :> TimedRequirement {
@@ -278,58 +278,58 @@ package ChaperoneRequirements {
     }
     requirement def GainMargin :> TimedRequirement {
         doc /* the gain margin from [u] to [y] shall be at least [q] */
-        attribute input : ScalarQuantityValue[1];
-        attribute output : ScalarQuantityValue[1];
+        attribute input [1];
+        attribute output [1];
         attribute lower : ScalarQuantityValue[1];
     }
     requirement def PhaseMargin :> TimedRequirement {
         doc /* the phase margin from [u] to [y] shall be at least [q] */
-        attribute input : ScalarQuantityValue[1];
-        attribute output : ScalarQuantityValue[1];
+        attribute input [1];
+        attribute output [1];
         attribute lower : ScalarQuantityValue[1];
     }
     requirement def BandwidthAtLeast :> TimedRequirement {
         doc /* the bandwidth from [u] to [y] shall be at least [f] */
-        attribute input : ScalarQuantityValue[1];
-        attribute output : ScalarQuantityValue[1];
+        attribute input [1];
+        attribute output [1];
         attribute lower : FrequencyValue[1];
     }
     requirement def BandwidthAtMost :> TimedRequirement {
         doc /* the bandwidth from [u] to [y] shall be at most [f] */
-        attribute input : ScalarQuantityValue[1];
-        attribute output : ScalarQuantityValue[1];
+        attribute input [1];
+        attribute output [1];
         attribute upper : FrequencyValue[1];
     }
     requirement def PeakGain :> TimedRequirement {
         doc /* the peak gain from [u] to [y] shall be at most [q] */
-        attribute input : ScalarQuantityValue[1];
-        attribute output : ScalarQuantityValue[1];
+        attribute input [1];
+        attribute output [1];
         attribute upper : ScalarQuantityValue[1];
     }
     requirement def DcGain :> TimedRequirement {
         doc /* the dc gain from [u] to [y] shall be between [q] and [q] */
-        attribute input : ScalarQuantityValue[1];
-        attribute output : ScalarQuantityValue[1];
+        attribute input [1];
+        attribute output [1];
         attribute lower : ScalarQuantityValue[1];
         attribute upper : ScalarQuantityValue[1];
     }
     requirement def GainWithinCurve :> TimedRequirement {
         doc /* the gain from [u] to [y] shall stay below / above / within [curve] */
-        attribute input : ScalarQuantityValue[1];
-        attribute output : ScalarQuantityValue[1];
+        attribute input [1];
+        attribute output [1];
         attribute curve : String[1];
         attribute side : EnvelopeSide[1];
     }
     requirement def SensitivityPeak :> TimedRequirement {
         doc /* the sensitivity peak of the loop from [u] to [y] shall be at most [q] */
-        attribute input : ScalarQuantityValue[1];
-        attribute output : ScalarQuantityValue[1];
+        attribute input [1];
+        attribute output [1];
         attribute upper : ScalarQuantityValue[1];
     }
     requirement def DelayMargin :> TimedRequirement {
         doc /* the delay margin from [u] to [y] shall be at least [duration] */
-        attribute input : ScalarQuantityValue[1];
-        attribute output : ScalarQuantityValue[1];
+        attribute input [1];
+        attribute output [1];
         attribute lower : DurationValue[1];
     }
 }
