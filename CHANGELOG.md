@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.14.1 — 2026-11-06
+
+- `ChaperoneMetadata`: `ChaperoneRewrite`, on a Derivation connection: status, approver, date, what was refused.
+- `examples/Derivation.sysml`: an original, its rewrite, and a partial refusal.
+- CI: `sysmlpy analyze` on the three packages. `PATTERNS.md`: a stray separator.
+
 ## v0.14.0 — 2026-11-06
 
 First release, written against Requirements 0.14.0.

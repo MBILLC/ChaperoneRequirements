@@ -4,7 +4,7 @@ Written from Chaperone's vocabulary table.
 
 | Definition | The controlled-English phrase | Attributes (**mandatory**) |
 |---|---|---|
-| `Hold` | <state> shall be ... / shall remain within ... [, except for at most <budget> ...] | ; a `require constraint` |
+| `Hold` | <state> shall be ... / shall remain within ... [, except for at most <budget> ...] | a `require constraint` |
 | `AccumulatedDuration` | <state> shall be ... for at least / at most <duration> in total | lower, upper; a `require constraint` |
 | `EventCount` | <event> shall become ... at most / at least <n> times; shall not become ... | **edge**, lower, upper |
 | `EventFrequency` | <event> shall become ... at a frequency of at most <f> | **edge**, **upper** |
