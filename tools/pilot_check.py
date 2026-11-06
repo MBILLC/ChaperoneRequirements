@@ -61,6 +61,7 @@ def main(argv=None) -> int:
             print(f"--- {m}\n{out}{err}", flush=True)
         a.out.mkdir(parents=True, exist_ok=True)
         for name in a.export:
+            print("cells:", run_cell(client, f"%show {name}")[0][:1500], flush=True)
             out, err = run_cell(client, f"%export {name}")
             print(f"--- %export {name}\n{out[:400]}{err[:2000]}", flush=True)
             if err.strip():
