@@ -24,10 +24,9 @@ jobs:
           curl -sSL -o kernel.zip "https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation/releases/download/${PILOT_RELEASE}/jupyter-sysml-kernel-${PILOT_KERNEL}.zip"
           mkdir -p "$RUNNER_TEMP/kernel" && unzip -q kernel.zip -d "$RUNNER_TEMP/kernel" && rm kernel.zip
           python "$RUNNER_TEMP/kernel/install.py" --sys-prefix --library-path="$RUNNER_TEMP/kernel/sysml/sysml.library"
-      - name: Load the library and the probe, export the JSON
+      - name: Load the library and the examples, export the JSON
         run: |
-          python tools/pilot_check.py ChaperoneMetadata.sysml ChaperoneUnits.sysml examples/Probe.sysml \
-            --export Probe --export ChaperoneMetadata
+          python tools/pilot_check.py ChaperoneMetadata.sysml ChaperoneUnits.sysml ChaperoneRequirements.sysml             examples/Example.sysml examples/ExampleLibrary.sysml             --export Example --export ExampleLibrary
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -38,6 +38,7 @@ package ChaperoneMetadata {
         attribute tags : String[0..1];
         attribute criticality : String[0..1];
         attribute tbd : String[0..1];
+        attribute comment : String[0..1];
         attribute uses : String[0..*];
         attribute derivesFrom : String[0..*];
     }
@@ -45,6 +46,7 @@ package ChaperoneMetadata {
     metadata def ChaperoneSource {
         doc /* On a requirement: the informal sentence the statement formalises, quoted from its source. */
         attribute informal : String[0..1];
+        attribute statement : String[0..1];
     }
 
     metadata def ChaperoneData {
