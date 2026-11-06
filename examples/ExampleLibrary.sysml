@@ -516,7 +516,7 @@ package ExampleLibrary {
         requirement <'REQ-EX-eig_real'> 'Example eig_real' : ChaperoneRequirements::EigenvalueRealPart {
             doc /* Every eigenvalue shall have a real part below -0.5 1/s. */
             subject plant : ExampleLibrary::Plants::Cabin;
-            attribute :>> upper = -0.5['1'/s];
+            attribute :>> upper = -0.5[1/s];
             @ChaperoneReq { verificationMethod = "Simulation"; rationale = "A rationale with \"quotes\", a \\ backslash and a second\nline."; tags = "example"; }
         }
         requirement <'REQ-EX-eig_stable'> 'Example eig_stable' : ChaperoneRequirements::PlantStable {
