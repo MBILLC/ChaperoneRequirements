@@ -38,7 +38,7 @@ package ChaperoneMetadata {
         attribute tags : String[0..1];
         attribute criticality : String[0..1];
         attribute tbd : String[0..1];
-        attribute comment : String[0..1];
+        attribute reviewComment : String[0..1];
         attribute uses : String[0..*];
         attribute derivesFrom : String[0..*];
     }

@@ -28,14 +28,14 @@ package ChaperoneRequirements {
         return attribute result;
     }
     calc def Sustained {
-        doc /* state has been true for duration. */
-        in attribute state;
+        doc /* condition has been true for duration. */
+        in attribute condition;
         in attribute duration;
         return attribute result;
     }
     calc def SustainedAccumulated {
-        doc /* state has been true for duration in total within the last window. */
-        in attribute state;
+        doc /* condition has been true for duration in total within the last window. */
+        in attribute condition;
         in attribute duration;
         in attribute window;
         return attribute result;
