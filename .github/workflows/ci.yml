@@ -28,6 +28,13 @@ jobs:
         run: |
           python tools/pilot_check.py ChaperoneMetadata.sysml ChaperoneUnits.sysml examples/Probe.sysml \
             --magic "%help" --magic "%help %export" --export Probe --export ChaperoneMetadata
+      - name: Where the export went
+        if: always()
+        run: |
+          find "$PWD" /tmp "$HOME" -type f -mmin -10 \( -name "*.json" -o -name "*.sysml.json" \) 2>/dev/null | grep -v "/.cache\|runtime/kernel\|/_temp/\|_actions" | head
+          mkdir -p pilot-export
+          find /tmp "$HOME" "$PWD" -type f -mmin -10 -name "*.json" 2>/dev/null | grep -i -E "probe|chaperone|export" | xargs -r -I{} cp {} pilot-export/ || true
+          ls -la pilot-export
       - uses: actions/upload-artifact@v4
         if: always()
         with:

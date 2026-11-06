@@ -32,7 +32,7 @@ def run_cell(client, code: str, timeout: float = 1500.0) -> tuple[str, str]:
         if t == "stream":
             (err if c.get("name") == "stderr" else out).append(c["text"])
         elif t in ("execute_result", "display_data"):
-            out.append(c["data"].get("text/plain", ""))
+            out.append(c["data"].get("text/plain") or " ".join(f"{k}: {str(v)[:300]}" for k, v in c["data"].items()))
         elif t == "error":
             err.append("\n".join(c.get("traceback") or [c.get("evalue", "")]))
         elif t == "status" and c.get("execution_state") == "idle":
