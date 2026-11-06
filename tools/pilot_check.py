@@ -9,7 +9,9 @@ code is the number of failures. `--export` writes the JSON of a named package wi
 """
 import argparse
 import base64
+import base64
 import queue
+import re
 import re
 import sys
 from pathlib import Path
@@ -62,8 +64,13 @@ def main(argv=None) -> int:
         a.out.mkdir(parents=True, exist_ok=True)
         for name in a.export:
             out, err = run_cell(client, f"%export {name}")
-            print(f"--- %export {name}\n{out[:400]}{err[:2000]}", flush=True)
-            if err.strip():
+            # the kernel returns the file as a download link: <a download="X.json" href="data:...;base64,...">
+            m = re.search(r'download="([^"]+)"\s+href="data:[^;]+;base64,([^"]+)"', out)
+            if m:
+                (a.out / m.group(1)).write_bytes(base64.b64decode(m.group(2)))
+                print(f"exported {name} -> {a.out / m.group(1)}", flush=True)
+            else:
+                print(f"FAIL %export {name}\n{out[-600:]}{err[:2000]}", flush=True)
                 failures += 1
     finally:
         client.stop_channels()
