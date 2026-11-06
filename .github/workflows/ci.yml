@@ -26,7 +26,7 @@ jobs:
           python "$RUNNER_TEMP/kernel/install.py" --sys-prefix --library-path="$RUNNER_TEMP/kernel/sysml/sysml.library"
       - name: Load the library and the examples, export the JSON
         run: |
-          python tools/pilot_check.py ChaperoneMetadata.sysml ChaperoneUnits.sysml ChaperoneRequirements.sysml             examples/Example.sysml examples/ExampleLibrary.sysml             --export Example --export ExampleLibrary
+          python tools/pilot_check.py ChaperoneMetadata.sysml ChaperoneUnits.sysml ChaperoneRequirements.sysml examples/Example.sysml examples/ExampleLibrary.sysml examples/Derivation.sysml --export Example --export ExampleLibrary --export DerivationExample
       - uses: actions/upload-artifact@v4
         if: always()
         with:
