@@ -38,6 +38,10 @@ package Cabin {
 
 This reads *While the pack is on, the door shall become open at most 3 times.* A usage with every mandatory attribute bound states one checkable requirement. Chaperone refuses any other usage rather than completing it.
 
+## Comparisons
+
+A Real has only `<=` and `>=`. Writing `<` or `>` on a Real signal reads as `<=` or `>=`, because a simulated Real cannot tell them apart at the limit. An Integer keeps `<` and `>`, which mean something there: `< 3` is at most 2.
+
 ## Reading a model
 
 Chaperone reads the normative JSON of Systems Modeling API & Services 1.0:
