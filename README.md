@@ -42,6 +42,8 @@ This reads *While the pack is on, the door shall become open at most 3 times.* A
 
 A Real has only `<=` and `>=`. Writing `<` or `>` on a Real signal reads as `<=` or `>=`, because a simulated Real cannot tell them apart at the limit. An Integer keeps `<` and `>`, which mean something there: `< 3` is at most 2.
 
+The eigenvalue family is the one exception. `EigenvalueRealPart`'s `upper` is strict, `re < upper`, and so is the band that selects the modes, because an eigenvalue is computed and can sit exactly on the bound: at 0, an exact integrator is not asymptotically stable.
+
 ## Reading a model
 
 Chaperone reads the normative JSON of Systems Modeling API & Services 1.0:

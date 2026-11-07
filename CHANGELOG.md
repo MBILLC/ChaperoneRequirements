@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.14.2 — 2026-11-07
+
+- `examples/ExampleLibrary.sysml` writes `<=` and `>=` on Reals. `PATTERNS.md` and the README state the rule and its one exception, the eigenvalue family.
+- `ChaperoneMetadata`: `rtol` on a verification case is now `relativeTolerance`, the name SysPhS 2's analysis case uses, as `startTime` and `stopTime` already are. Nothing is imported from SysPhS.
+
 ## v0.14.1 — 2026-11-06
 
 - `ChaperoneMetadata`: `ChaperoneRewrite`, on a Derivation connection: status, approver, date, what was refused.

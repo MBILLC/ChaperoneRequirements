@@ -94,7 +94,7 @@ package ChaperoneMetadata {
         attribute solver : String[0..1];
         attribute stopTime : String[0..1];
         attribute interval : String[0..1];
-        attribute rtol : String[0..1];
+        attribute relativeTolerance : String[0..1];
         attribute instrumentation : String[0..1];
         attribute engines : String[0..1];
         attribute original : String[0..1];

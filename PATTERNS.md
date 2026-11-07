@@ -2,6 +2,8 @@
 
 Written from Chaperone's vocabulary table.
 
+A comparison on a Real has only `<=` and `>=`: in the phrases below, `below` means `<=` and `above` means `>=`, and a `<` or `>` written in a `require constraint` or a trigger reads the same way. An Integer keeps `<` and `>`. `EigenvalueRealPart` is the one exception, and stays strict. See the README, *Comparisons*.
+
 | Definition | The controlled-English phrase | Attributes (**mandatory**) |
 |---|---|---|
 | `Hold` | <state> shall be ... / shall remain within ... [, except for at most <budget> ...] | a `require constraint` |

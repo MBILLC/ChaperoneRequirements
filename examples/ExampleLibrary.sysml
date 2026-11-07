@@ -85,7 +85,7 @@ package ExampleLibrary {
             doc /* When the bus voltage falls below 200 V, the pack shall be on. */
             subject plant : ExampleLibrary::Plants::Cabin;
             attribute :>> trigger = TriggerKind::rising;
-            attribute :>> triggerEvent = plant.'the bus voltage' < 200[V];
+            attribute :>> triggerEvent = plant.'the bus voltage' <= 200[V];
             @ChaperoneReq { verificationMethod = "Simulation"; rationale = "A rationale with \"quotes\", a \\ backslash and a second\nline."; tags = "example"; }
             require constraint { plant.'the pack is on' }
         }
@@ -104,7 +104,7 @@ package ExampleLibrary {
             attribute :>> scope = ScopeKind::firstFor;
             attribute :>> scopeDuration = 10[s];
             @ChaperoneReq { verificationMethod = "Simulation"; rationale = "A rationale with \"quotes\", a \\ backslash and a second\nline."; tags = "example"; }
-            require constraint { plant.'the bus voltage' > 100[V] }
+            require constraint { plant.'the bus voltage' >= 100[V] }
         }
         requirement <'REQ-EX-every'> 'Example every' : ChaperoneRequirements::Hold {
             doc /* Every 2 s for 0.5 s, the pack shall be on. */
@@ -131,7 +131,7 @@ package ExampleLibrary {
             attribute :>> scopeEvent = plant.'the pack is on';
             attribute :>> scopeEndEvent = plant.'the door is open';
             @ChaperoneReq { verificationMethod = "Simulation"; rationale = "A rationale with \"quotes\", a \\ backslash and a second\nline."; tags = "example"; }
-            require constraint { plant.'the fan speed' > 100[rpm] }
+            require constraint { plant.'the fan speed' >= 100[rpm] }
         }
         requirement <'REQ-EX-until'> 'Example until' : ChaperoneRequirements::Hold {
             doc /* Until the pack becomes on, the altitude shall be below 10 kft. */
@@ -139,7 +139,7 @@ package ExampleLibrary {
             attribute :>> scope = ScopeKind::untilEvent;
             attribute :>> scopeEvent = plant.'the pack is on';
             @ChaperoneReq { verificationMethod = "Simulation"; rationale = "A rationale with \"quotes\", a \\ backslash and a second\nline."; tags = "example"; }
-            require constraint { plant.'the altitude' < 10[kft] }
+            require constraint { plant.'the altitude' <= 10[kft] }
         }
         requirement <'REQ-EX-cmp_sig'> 'Example cmp_sig' : ChaperoneRequirements::Hold {
             doc /* The cabin temperature shall be at most the temperature setpoint. */
@@ -164,7 +164,7 @@ package ExampleLibrary {
             subject plant : ExampleLibrary::Plants::Cabin;
             @ChaperoneReq { verificationMethod = "Simulation"; rationale = "A rationale with \"quotes\", a \\ backslash and a second\nline."; tags = "example"; }
             assume constraint { plant.'the pack is on' or plant.'the door is open' }
-            require constraint { plant.'the bus voltage' > 100[V] }
+            require constraint { plant.'the bus voltage' >= 100[V] }
         }
         requirement <'REQ-EX-and'> 'Example and' : ChaperoneRequirements::AllOf {
             doc /* While the pack is on, the bus voltage shall be above 100 V and the bleed flow shall be above 0.1 kg/s. */
@@ -172,10 +172,10 @@ package ExampleLibrary {
             @ChaperoneReq { verificationMethod = "Simulation"; rationale = "A rationale with \"quotes\", a \\ backslash and a second\nline."; tags = "example"; }
             assume constraint { plant.'the pack is on' }
             requirement response1 : ChaperoneRequirements::Hold {
-                require constraint { plant.'the bus voltage' > 100[V] }
+                require constraint { plant.'the bus voltage' >= 100[V] }
             }
             requirement response2 : ChaperoneRequirements::Hold {
-                require constraint { plant.'the bleed flow' > 0.1[kg/s] }
+                require constraint { plant.'the bleed flow' >= 0.1[kg/s] }
             }
         }
         requirement <'REQ-EX-or'> 'Example or' : ChaperoneRequirements::AnyOf {
@@ -183,7 +183,7 @@ package ExampleLibrary {
             subject plant : ExampleLibrary::Plants::Cabin;
             @ChaperoneReq { verificationMethod = "Simulation"; rationale = "A rationale with \"quotes\", a \\ backslash and a second\nline."; tags = "example"; }
             requirement response1 : ChaperoneRequirements::Hold {
-                require constraint { plant.'the bus voltage' > 100[V] }
+                require constraint { plant.'the bus voltage' >= 100[V] }
             }
             requirement response2 : ChaperoneRequirements::Hold {
                 require constraint { plant.'the pack is on' }
@@ -201,13 +201,13 @@ package ExampleLibrary {
             subject plant : ExampleLibrary::Plants::Cabin;
             @ChaperoneReq { verificationMethod = "Simulation"; rationale = "A rationale with \"quotes\", a \\ backslash and a second\nline."; tags = "example"; }
             assume constraint { Sustained(plant.'the pack is on', 10[s]) }
-            require constraint { plant.'the fan speed' > 100[rpm] }
+            require constraint { plant.'the fan speed' >= 100[rpm] }
         }
         requirement <'REQ-EX-sustained_cmp'> 'Example sustained_cmp' : ChaperoneRequirements::Hold {
             doc /* When the bus voltage has been above 200 V for 10 s, the pack shall be on. */
             subject plant : ExampleLibrary::Plants::Cabin;
             attribute :>> trigger = TriggerKind::rising;
-            attribute :>> triggerEvent = Sustained(plant.'the bus voltage' > 200[V], 10[s]);
+            attribute :>> triggerEvent = Sustained(plant.'the bus voltage' >= 200[V], 10[s]);
             @ChaperoneReq { verificationMethod = "Simulation"; rationale = "A rationale with \"quotes\", a \\ backslash and a second\nline."; tags = "example"; }
             require constraint { plant.'the pack is on' }
         }
@@ -228,13 +228,13 @@ package ExampleLibrary {
             doc /* The integral of the bleed flow shall be below 8 kg. */
             subject plant : ExampleLibrary::Plants::Cabin;
             @ChaperoneReq { verificationMethod = "Simulation"; rationale = "A rationale with \"quotes\", a \\ backslash and a second\nline."; tags = "example"; }
-            require constraint { Integral(plant.'the bleed flow') < 8[kg] }
+            require constraint { Integral(plant.'the bleed flow') <= 8[kg] }
         }
         requirement <'REQ-EX-moving'> 'Example moving' : ChaperoneRequirements::Hold {
             doc /* The moving average of the bus voltage over 5 s shall be above 100 V. */
             subject plant : ExampleLibrary::Plants::Cabin;
             @ChaperoneReq { verificationMethod = "Simulation"; rationale = "A rationale with \"quotes\", a \\ backslash and a second\nline."; tags = "example"; }
-            require constraint { MovingAverage(plant.'the bus voltage', 5[s]) > 100[V] }
+            require constraint { MovingAverage(plant.'the bus voltage', 5[s]) >= 100[V] }
         }
         requirement <'REQ-EX-difference'> 'Example difference' : ChaperoneRequirements::Hold {
             doc /* The difference between the cabin temperature and the temperature setpoint shall be at most 2 K. */
@@ -258,7 +258,7 @@ package ExampleLibrary {
             doc /* The cabin temperature shall be above -20.5 degC. */
             subject plant : ExampleLibrary::Plants::Cabin;
             @ChaperoneReq { verificationMethod = "Simulation"; rationale = "A rationale with \"quotes\", a \\ backslash and a second\nline."; tags = "example"; }
-            require constraint { plant.'the cabin temperature' > -20.5['°C_abs'] }
+            require constraint { plant.'the cabin temperature' >= -20.5['°C_abs'] }
         }
         requirement <'REQ-EX-duration'> 'Example duration' : ChaperoneRequirements::AccumulatedDuration {
             doc /* While the pack is on, the door shall be open for at most 5 s in total. */
@@ -336,7 +336,7 @@ package ExampleLibrary {
         requirement <'REQ-EX-oscillate'> 'Example oscillate' : ChaperoneRequirements::SlidingFrequency {
             doc /* The bus voltage shall not oscillate about 220 V faster than 2 Hz on average over any 1 min. */
             subject plant : ExampleLibrary::Plants::Cabin;
-            attribute :>> edge = plant.'the bus voltage' > 220[V];
+            attribute :>> edge = plant.'the bus voltage' >= 220[V];
             attribute :>> upper = 2[Hz];
             attribute :>> window = 1[min];
             attribute :>> risingOnly = false;
