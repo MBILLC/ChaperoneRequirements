@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.14.3 — 2026-11-07
+
+- `ChaperoneUnits`: `bar` has no short name. `<bar> bar` named it twice, and SysON v2026.11.0 does not resolve an element whose short name equals its name (eclipse-syson/syson#2106), so `2[bar]` lost its unit there. `[bar]` is written and read as before.
+
 ## v0.14.2 — 2026-11-07
 
 - `examples/ExampleLibrary.sysml` writes `<=` and `>=` on Reals. `PATTERNS.md` and the README state the rule and its one exception, the eigenvalue family.
