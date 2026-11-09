@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.14.4 — 2026-11-09
+
+- `ChaperoneUnits`: `mH`, `uH` (inductance) and `mWb` (magnetic flux), display units of quantities the MSL's connectors carry (Chaperone, `Planning/MSL_PHRASEBOOK_SURVEY.md`, step 3). The SI library of SysML v2 has `H` and `Wb` but not these prefixed forms. The other display units of that step (`deg/s`, `deg/s2`, `l/min`, `m3/h`, `kJ/kg`, `g/kg`) are composed from units the SI library defines, and need nothing here. The Modelica side is Requirements 0.15.0.
+
 ## v0.14.3 — 2026-11-07
 
 - `ChaperoneUnits`: `bar` has no short name. `<bar> bar` named it twice, and SysON v2026.11.0 does not resolve an element whose short name equals its name (eclipse-syson/syson#2106), so `2[bar]` lost its unit there. `[bar]` is written and read as before.
