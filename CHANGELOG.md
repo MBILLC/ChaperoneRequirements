@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.16.0 — 2026-11-09
+
+- Phasors (Chaperone, `Planning/MSL_PHRASEBOOK_SURVEY.md`, step 5): a glossary phasor is an attribute typed `ScalarValues::Complex`, its unit in `@ChaperoneSignal`, and the parts a requirement names are attributes nested in it: `magnitude`, `'phase angle'`, `'real part'`, `'imaginary part'` and `'phase angle relative to <another phasor>'`, typed by their ISQ value types. The `ChaperoneSignal` doc and the README say so; no definition changed. The Modelica side is Requirements 0.17.0 (`Units.Phasors`).
+
 ## v0.15.0 — 2026-11-09
 
 - `ChaperoneUnits`: display units of the quantities of the MSL's components (Chaperone, `Planning/MSL_PHRASEBOOK_SURVEY.md`, step 4) that the SI library of SysML v2 lacks: `kOhm`, `MOhm`, `mOhm` (resistance); `uF`, `nF`, `pF` (capacitance); `'kV⋅A'` and `kvar` (apparent and reactive power); `'A⋅h'` (charge); `'kJ/(kg⋅K)'` (specific heat capacity); `'mPa⋅s'` (dynamic viscosity); `mT` (magnetic flux density). The coherent SI units of that step (`'Ω'`, `S`, `F`, `'V⋅A'`, `var`, `C`, `'J/(kg⋅K)'`, `'Pa⋅s'`, `'W/(m⋅K)'`, `'W/(m²⋅K)'`, `'J/K'`, `'K/W'`, `'W/m²'`, `'kg⋅m²'`, `T`, ...) are the SI library's, and `g/cm3`, `cm2`, `mm2` and `bar/s` are composed from units it, or this package, defines. The Modelica side is Requirements 0.16.0.
