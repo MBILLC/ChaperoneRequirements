@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.15.0 — 2026-11-09
+
+- `ChaperoneUnits`: display units of the quantities of the MSL's components (Chaperone, `Planning/MSL_PHRASEBOOK_SURVEY.md`, step 4) that the SI library of SysML v2 lacks: `kOhm`, `MOhm`, `mOhm` (resistance); `uF`, `nF`, `pF` (capacitance); `'kV⋅A'` and `kvar` (apparent and reactive power); `'A⋅h'` (charge); `'kJ/(kg⋅K)'` (specific heat capacity); `'mPa⋅s'` (dynamic viscosity); `mT` (magnetic flux density). The coherent SI units of that step (`'Ω'`, `S`, `F`, `'V⋅A'`, `var`, `C`, `'J/(kg⋅K)'`, `'Pa⋅s'`, `'W/(m⋅K)'`, `'W/(m²⋅K)'`, `'J/K'`, `'K/W'`, `'W/m²'`, `'kg⋅m²'`, `T`, ...) are the SI library's, and `g/cm3`, `cm2`, `mm2` and `bar/s` are composed from units it, or this package, defines. The Modelica side is Requirements 0.16.0.
+
 ## v0.14.4 — 2026-11-09
 
 - `ChaperoneUnits`: `mH`, `uH` (inductance) and `mWb` (magnetic flux), display units of quantities the MSL's connectors carry (Chaperone, `Planning/MSL_PHRASEBOOK_SURVEY.md`, step 3). The SI library of SysML v2 has `H` and `Wb` but not these prefixed forms. The other display units of that step (`deg/s`, `deg/s2`, `l/min`, `m3/h`, `kJ/kg`, `g/kg`) are composed from units the SI library defines, and need nothing here. The Modelica side is Requirements 0.15.0.
