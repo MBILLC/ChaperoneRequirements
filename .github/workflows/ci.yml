@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
         with: { distribution: temurin, java-version: "21" }
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with: { python-version: "3.12" }
       - name: Install the pilot's Jupyter kernel
         run: |
@@ -27,7 +27,7 @@ jobs:
       - name: Load the library and the examples, export the JSON
         run: |
           python tools/pilot_check.py ChaperoneMetadata.sysml ChaperoneUnits.sysml ChaperoneRequirements.sysml examples/Example.sysml examples/ExampleLibrary.sysml examples/Derivation.sysml --export Example --export ExampleLibrary --export DerivationExample
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: pilot-export
@@ -37,8 +37,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with: { python-version: "3.12" }
       - run: pip install sysmlpy==0.105.0
       - run: sysmlpy analyze ChaperoneMetadata.sysml ChaperoneUnits.sysml ChaperoneRequirements.sysml
