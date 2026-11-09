@@ -16,5 +16,8 @@ package ChaperoneUnits {
     attribute <kft> kilofoot : LengthUnit { :>> unitConversion : ConversionByConvention { :>> referenceUnit = m; :>> conversionFactor = 304.8; } }
     attribute <rpm> revolutionPerMinute : AngularVelocityUnit { :>> unitConversion : ConversionByConvention { :>> referenceUnit = rad/s; :>> conversionFactor = 0.10471975511965977; } }
     attribute <'rev/min'> revolutionsPerMinute : AngularVelocityUnit { :>> unitConversion : ConversionByConvention { :>> referenceUnit = rad/s; :>> conversionFactor = 0.10471975511965977; } }
+    attribute <mH> millihenry : InductanceUnit { :>> unitConversion : ConversionByConvention { :>> referenceUnit = H; :>> conversionFactor = 0.001; } }
+    attribute <uH> microhenry : InductanceUnit { :>> unitConversion : ConversionByConvention { :>> referenceUnit = H; :>> conversionFactor = 1.0E-6; } }
+    attribute <mWb> milliweber : MagneticFluxUnit { :>> unitConversion : ConversionByConvention { :>> referenceUnit = Wb; :>> conversionFactor = 0.001; } }
     attribute <'%'> percent : DimensionOneUnit { :>> unitConversion : ConversionByConvention { :>> referenceUnit = one; :>> conversionFactor = 0.01; } }
 }
