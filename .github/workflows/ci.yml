@@ -1,7 +1,8 @@
 # Copyright © 2026 Model Based Innovation LLC. All rights reserved. BSD 2-Clause, see LICENSE.
 name: ci
+# One run per change: on its pull request (main changes only by merging one that passed), not on
+# branch, main or tag pushes. Run it by hand with `gh workflow run ci.yml`.
 on:
-  push:
   pull_request:
   workflow_dispatch:
 env:
