@@ -15,7 +15,10 @@ package ChaperoneMetadata {
 
     metadata def ChaperoneSignal {
         doc /* On an attribute of a subject: a glossary signal. Without it the attribute's declared
-             * name is the noun phrase and its ISQ type gives the SI unit. */
+             * name is the noun phrase and its ISQ type gives the SI unit. A phasor is an attribute
+             * typed ScalarValues::Complex, whose `unit` this names (Complex has none); the parts a
+             * requirement names are attributes nested in it: magnitude, 'phase angle', 'real part',
+             * 'imaginary part' and 'phase angle relative to <another phasor>'. */
         attribute phrase : String[0..1];
         attribute unit : String[0..1];
         attribute description : String[0..1];

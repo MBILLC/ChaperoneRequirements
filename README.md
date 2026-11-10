@@ -50,6 +50,7 @@ Chaperone reads the normative JSON of Systems Modeling API & Services 1.0:
 
 - the short name of a requirement usage is its ID, and the declared name its title;
 - the attributes of the subject are the glossary; the declared name is the noun phrase, and the ISQ type gives the dimension;
+- a phasor (a quasi-static voltage or current) is an attribute typed `ScalarValues::Complex`, its unit named in `@ChaperoneSignal`; a requirement names one of its parts, an attribute nested in it: `magnitude`, `'phase angle'`, `'real part'`, `'imaginary part'`, or `'phase angle relative to <another phasor>'`, as in `plant.'the circuit current'.magnitude <= 12[A]`. A phase angle is in (-180, 180] deg. How the model gives the phasor (one Complex, or two Reals in polar or rectangular form) is in the binding file;
 - what binds an attribute to a plant variable is a separate file, not part of the model.
 
 A verdict is written back as a `verification` usage with `VerdictKind` and `@ChaperoneVerdict`. `VerdictKind` has no neutral element, so *not applicable* reads `inconclusive` with `property = notApplicable` in the metadata, never `pass`.
