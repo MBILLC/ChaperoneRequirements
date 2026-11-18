@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.17.0 — 2026-11-18
+
+- `ChaperoneMetadata`: `ChaperoneActivity` gets `inspectedItem` (`item` is a keyword), `expectedType` and `connectedTo`, the fields `ITEM`, `EXPECTED_TYPE` and `CONNECTED_TO` of an Inspection activity that Chaperone checks against the plant's Modelica source (architectural requirements verified by inspection; Chaperone `Planning/MODELICA_TRACEABILITY_PLAN.md`, item 1). Multi-line values (one name per line) are one string, as `description` is. No requirement shape changed; the Modelica Requirements library is not affected.
+
 ## v0.16.0 — 2026-11-09
 
 - Phasors (Chaperone, `Planning/MSL_PHRASEBOOK_SURVEY.md`, step 5): a glossary phasor is an attribute typed `ScalarValues::Complex`, its unit in `@ChaperoneSignal`, and the parts a requirement names are attributes nested in it: `magnitude`, `'phase angle'`, `'real part'`, `'imaginary part'` and `'phase angle relative to <another phasor>'`, typed by their ISQ value types. The `ChaperoneSignal` doc and the README say so; no definition changed. The Modelica side is Requirements 0.17.0 (`Units.Phasors`).

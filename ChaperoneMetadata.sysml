@@ -137,7 +137,12 @@ package ChaperoneMetadata {
     }
 
     metadata def ChaperoneActivity {
-        doc /* On a package: a verification activity over the requirements it verifies. */
+        doc /* On a package: a verification activity over the requirements it verifies. An Inspection
+         * may name what it inspects in the plant's Modelica source, which Chaperone checks
+         * (inspection.py): inspectedItem, the classes or components (qualified Modelica names, one per
+         * line); expectedType, the class each component is or inherits from; connectedTo, the
+         * connectors or components, relative to the class holding the item, each component is
+         * connected to. */
         attribute uid : String[0..1];
         attribute title : String[0..1];
         attribute method : String[0..1];
@@ -149,6 +154,9 @@ package ChaperoneMetadata {
         attribute description : String[0..1];
         attribute decidedBy : String[0..1];
         attribute verifies : String[0..*];
+        attribute inspectedItem : String[0..1];
+        attribute expectedType : String[0..1];
+        attribute connectedTo : String[0..1];
     }
 
     metadata def ChaperoneDisposition {
